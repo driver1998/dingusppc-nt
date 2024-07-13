@@ -30,6 +30,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <machines/machinefactory.h>
 #include <utils/profiler.h>
 #include <main.h>
+#include <SDL_main.h>
 
 #include <cinttypes>
 #include <csignal>

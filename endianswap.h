@@ -28,7 +28,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #ifndef ENDIAN_SWAP_H
 #define ENDIAN_SWAP_H
 
-#ifdef __GNUG__ /* GCC, ICC and Clang */
+#if defined(__GNUG__) && !defined(_WIN32) /* GCC, ICC and Clang */
 
 #   ifdef __APPLE__
 #       include <machine/endian.h>
@@ -40,7 +40,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #   define BYTESWAP_32(x) (__builtin_bswap32 (x))
 #   define BYTESWAP_64(x) (__builtin_bswap64 (x))
 
-#elif _MSC_VER   /* MSVC */
+#elif defined(_WIN32)   /* MSVC */
 
 #   include <stdlib.h>
 

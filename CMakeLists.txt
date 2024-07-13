@@ -10,14 +10,15 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 
-if (NOT WIN32 AND NOT EMSCRIPTEN)
+if (NOT MSVC AND NOT EMSCRIPTEN)
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
     if (UNIX AND NOT APPLE)
         find_package (Threads)
     endif()
+endif()
 
-elseif (WIN32) # Windows build relies on vcpkg
+if (MSVC) # Windows build relies on vcpkg
     # pick up system wide vcpkg if exists
     if (DEFINED ENV{VCPKG_ROOT} AND EXISTS $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
         message(STATUS "Using system vcpkg at $ENV{VCPKG_ROOT}")

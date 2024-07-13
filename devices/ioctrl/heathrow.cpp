@@ -33,6 +33,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <loguru.hpp>
 #include <machines/machinebase.h>
 
+#include <intrin.h>
+
 #include <cinttypes>
 #include <functional>
 #include <memory>
